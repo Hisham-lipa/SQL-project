@@ -1,0 +1,625 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="WSDA_Music.db" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure browser pragmas query" current="1"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="4026"/><column_width id="4" width="0"/><expanded_item id="2" parent="0"/><expanded_item id="5" parent="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="0"/><expanded_item id="3" parent="0"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><table title="Track" custom_title="0" dock_id="1" table="4,5:mainTrack"/><dock_state state="000000ff00000000fd0000000100000002000004f400000226fc0100000001fb000000160064006f0063006b00420072006f00770073006500310100000000000004f40000012d00ffffff000004f40000000000000004000000040000000800000008fc00000000"/><default_encoding codec=""/><browse_table_settings><table schema="main" name="Album" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_" freeze_columns="0"><sort/><column_widths><column index="1" value="56"/><column index="2" value="280"/><column index="3" value="53"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="Artist" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_" freeze_columns="0"><sort/><column_widths><column index="1" value="51"/><column index="2" value="179"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="Customer" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_" freeze_columns="0"><sort/><column_widths><column index="1" value="74"/><column index="2" value="78"/><column index="3" value="101"/><column index="4" value="300"/><column index="5" value="300"/><column index="6" value="156"/><column index="7" value="54"/><column index="8" value="117"/><column index="9" value="85"/><column index="10" value="156"/><column index="11" value="148"/><column index="12" value="234"/><column index="13" value="88"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="Invoice" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_" freeze_columns="0"><sort/><column_widths><column index="1" value="62"/><column index="2" value="76"/><column index="3" value="156"/><column index="4" value="300"/><column index="5" value="156"/><column index="6" value="72"/><column index="7" value="117"/><column index="8" value="105"/><column index="9" value="62"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="Track" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_" freeze_columns="0"><sort/><column_widths><column index="1" value="51"/><column index="2" value="195"/><column index="3" value="58"/><column index="4" value="83"/><column index="5" value="56"/><column index="6" value="241"/><column index="7" value="76"/><column index="8" value="85"/><column index="9" value="59"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table></browse_table_settings></tab_browse><tab_sql><sql name="SQL 1">--THIS IS COMMENT
+/* 
+CREATED BY: HISHAM
+DATE:06/01/2025
+DESCRIPTION:THIS A BASIC STRUCTURE QUERY
+
+*/</sql><sql name="SQL 2">/*
+CREATD BY:HISHAM
+DATE:06/01/2025
+DESCRIPTION:This Query Displays All Customers First,last Names and email address
+*/
+SELECT
+  FirstName AS [Customer FirstName],
+  LastName AS [Customer LastName],
+  Email AS EMAIL
+FROM
+  Customer
+ORDER BY
+  FirstName ASC,
+  LastName DESC
+LIMIT 10 </sql><sql name="SQL 3">/*
+NAME:Hisham
+DATE:06/01/2025
+DESCRIPTION:THIS CONTAINS THE PURCHASE OF TWO SONGS BY CUSTOMERS WITH 0.99 $ EACH
+*/
+SELECT
+  InvoiceDate,
+  BillingAddress,
+  BillingCity,
+  total
+FROM
+  Invoice
+WHERE
+  total=1.98
+ORDER BY
+  InvoiceDate</sql><sql name="SQL 4">/*
+NAME:Hisham
+DATE:06/01/2025
+DESCRIPTION:HOW MANY INVOICE EXIST BETWEEN 1.98 AND $5.00 ?
+*/
+SELECT
+  InvoiceDate,
+  BillingAddress,
+  BillingCity,
+  total
+FROM
+  Invoice
+WHERE
+  total BETWEEN 1.98 AND 5.00
+ORDER BY
+  InvoiceDate</sql><sql name="SQL 5">/*
+NAME:Hisham
+DATE:06/01/2025
+DESCRIPTION:HOW MANY INVOICE WE HAVE EXCATLY 1.98 OR 3.96?
+*/
+SELECT
+  InvoiceDate,
+  BillingAddress,
+  BillingCity,
+  total
+FROM
+  Invoice
+WHERE
+  total IN(1.98,3.96)
+ORDER BY
+  InvoiceDate</sql><sql name="SQL 6">/*
+NAME:Hisham
+DATE:06/01/2025
+DESCRIPTION:HOW MANY INVOICE WERE BILLED TO BRUSSELS,ORLANDO OR PARIS?
+*/
+SELECT
+  InvoiceDate,
+  BillingAddress,
+  BillingCity,
+  total
+FROM
+  Invoice
+WHERE
+  BillingCity IN('Brussels')
+ORDER BY
+  InvoiceDate</sql><sql name="SQL 7">/*
+NAME:Hisham
+DATE:06/01/2025
+DESCRIPTION:HOW MANY INVOICES WERE BILLED IN CITIES STARTS WITH B?
+*/
+--% I DONT CARE WHAT COMES NEXT
+SELECT
+  InvoiceDate,
+  BillingAddress,
+  BillingCity,
+  total
+FROM
+  Invoice
+WHERE
+  BillingCity LIKE 'B%'
+ORDER BY
+  InvoiceDate</sql><sql name="SQL 8">/*
+NAME:Hisham
+DATE:06/01/2025
+DESCRIPTION:HOW MANY INVOICES WERE BILLED IN CITIES THAt HAVE B any where in its name?
+*/
+--%i dont cARE
+SELECT
+  InvoiceDate,
+  BillingAddress,
+  BillingCity,
+  total
+FROM
+  Invoice
+WHERE
+  BillingCity LIKE '%B%'
+ORDER BY
+  InvoiceDate</sql><sql name="SQL 9">/*
+NAME:Hisham
+DATE:06/01/2025
+DESCRIPTION:how many invoice where billed on 2010-05-22 00:00:00 ?
+*/
+SELECT
+  InvoiceDate,
+  BillingAddress,
+  BillingCity,
+  total
+FROM
+  Invoice
+WHERE
+  DATE(InvoiceDate) ='2010-05-22'
+ORDER BY
+  InvoiceDate</sql><sql name="SQL 10">/*
+NAME:Hisham
+DATE:06/01/2025
+DESCRIPTION:how many invoice where billed on 2010-05-22 00:00:00 AND TOTAL OF LESS $3.00?
+*/
+SELECT
+  InvoiceDate,
+  BillingAddress,
+  BillingCity,
+  total
+FROM
+  Invoice
+WHERE
+  DATE(InvoiceDate) &gt;'2010-05-22' AND total&lt;3.00
+ORDER BY
+  InvoiceDate</sql><sql name="SQL 11">/*
+NAME:Hisham
+DATE:06/01/2025
+-- DESCRIPTION:get all billing cities start with p or statrs with d?
+*/
+SELECT
+  InvoiceDate,
+  BillingAddress,
+  BillingCity,
+  total
+FROM
+  Invoice
+WHERE
+  BillingCity LIKE 'P%' OR BillingCity LIKE 'D%'
+ORDER BY
+  InvoiceDate</sql><sql name="SQL 12">/*
+NAME:Hisham
+DATE:06/01/2025
+-- DESCRIPTION:getall invoices that are greater than 1.98 from any cities whose name starts with p ans d?
+PEMDAS-parenthesis,exponential,multiply,division,addition,subract
+BEMDAS
+*/
+SELECT
+  InvoiceDate,
+  BillingAddress,
+  BillingCity,
+  total
+FROM
+  Invoice
+WHERE
+  total &gt; 1.98 AND (BillingCity LIKE 'P%' OR BillingCity LIKE 'D%')
+ORDER BY
+  InvoiceDate</sql><sql name="SQL 13">/*
+
+NAME:Hisham
+DATE:06/01/2025
+DESCRIPTION:WSDA BUSINESS GOALS(THEY WANT MANY CUSTOMERS TO SPEND BETWEEN $7.00 AND 15.00)
+
+SALES CATEGORIES:
+BASELINE PURCHASE - $0.99 TO 1.99
+LOW PURCHASE - $2.00 TO 6.99
+TARGET PRICE -$7.00 TO $15.00
+TOP PERFORMER-ABOVE$15.00
+*/
+SELECT
+  InvoiceDate,
+  BillingAddress,
+  BillingCity,
+  total,
+  CASE
+    WHEN total&lt;2.00 THEN 'Baseline Purchase'
+    WHEN total BETWEEN  2.00 AND 6.99 THEN 'Low Purchase'
+    WHEN total BETWEEN  7.00 AND 15.00 THEN 'Target Purchase'
+    ELSE 'Top Performer'
+  END AS PurchaseType
+FROM
+  Invoice
+WHERE 
+  BillingCity ='Chicago' AND PurchaseType ='Top Performer'
+ORDER BY
+  BillingCity</sql><sql name="relationship table ">/*
+created by: hisham
+date:06/05/2025
+description:JOINS
+*/
+SELECT
+  *
+FROM
+  Invoice
+INNER JOIN
+  Customer
+ON
+  Invoice.CustomerId = Customer.CustomerId
+ORDER BY
+  Customer.CustomerId</sql><sql name="SQL 15">/*
+created by: hisham
+date:06/05/2025
+description:JOINS
+*/
+SELECT
+  c.LastName,
+  c.FirstName,
+  i.InvoiceId,
+  i.CustomerId,
+  i.InvoiceDate,
+  i.total
+FROM
+  Invoice AS i
+INNER JOIN
+  Customer AS c
+ON
+  i.CustomerId = c.CustomerId
+ORDER BY
+  c.CustomerId</sql><sql name="types of joins">/*
+created by: hisham
+date:06/05/2025
+description:JOINS
+*/
+SELECT
+  
+  c.CustomerId,
+  i.InvoiceId,
+  i.BillingAddress,
+  i.InvoiceDate,
+  i.total
+FROM
+  Invoice AS i
+RIGHT OUTER JOIN  --ALSO LEFT OUTER JOIN USED
+  Customer AS c
+ON
+  i.CustomerId = c.CustomerId
+ORDER BY
+  c.CustomerId</sql><sql name="SQL 17">/*
+CREATED BY:HISHAM
+DATE:06/06/2025
+DESCRIPTION:JOINS on more than two tables|what employees are responsible for the 10 highest individual sales?
+*/
+SELECT
+  e.FirstName,
+  e.LastName,
+  e.EmployeeId,
+  c.FirstName,
+  c.LastName,
+  i.CustomerId,
+  c.SupportRepId,
+  i.total
+  
+FROM
+  Invoice AS i
+INNER JOIN
+  Customer AS c
+ON 
+  i.CustomerId=c.CustomerId
+INNER JOIN
+  Employee AS e
+ON
+  c.SupportRepId=e.EmployeeId
+ORDER BY
+  i.total DESC
+LIMIT 10</sql><sql name="sql function">/*
+created by:hisham
+date:06/06/2025
+description:create a mailing list of customers
+*/
+-- concatenate(||)
+SELECT
+  FirstName,
+  LastName,
+  Address,
+  FirstName ||' '||LastName||' '||Address||' , '||City||' '||State||' '||PostalCode AS [mailing address]
+FROM
+  Customer
+WHERE
+  Country='USA'
+  </sql><sql name="SQL function (truncate)">/*
+created by:hisham
+date:06/06/2025
+description:create a mailing list of customers
+*/
+-- concatenate(||)
+--substring(substr())
+SELECT
+  FirstName,
+  LastName,
+  Address,
+  FirstName ||' '||LastName||' '||Address||' , '||City||' '||State||' '||PostalCode AS [mailing address],
+  LENGTH(PostalCode),
+  substr(postalcode,1,5) AS [five digit postcode]
+FROM
+  Customer
+WHERE
+  Country='USA'
+  </sql><sql name="SQL string function">/*
+created by:hisham
+date:06/06/2025
+description:create a mailing list of customers
+*/
+-- concatenate(||)
+--substring(substr())
+--uppercase(upper()) and lower case(lower())
+SELECT
+  FirstName,
+  LastName,
+  Address,
+  FirstName ||' '||LastName||' '||Address||' , '||City||' '||State||' '||PostalCode AS [mailing address],
+  LENGTH(PostalCode),
+  substr(postalcode,1,5) AS [five digit postcode],
+  upper(firstname)AS[firstname all caps],
+  lower(LastName)AS[lasttname all lowers]
+FROM
+  Customer
+WHERE
+  Country='USA'
+  </sql><sql name="date function">/*
+created by:hisham
+date:06/06/2025
+description:calculate the ages of Employee
+--IN TIME FUNCTION THE FORMAT SHOULD BE (%Y CAPS,%m small,%d small)
+*/
+SELECT
+  LastName,
+  FirstName,
+  BirthDate,
+  strftime('%Y-%m-%d',Birthdate) AS [Birthdate No Timecode],
+  strftime('%Y-%m-%d','now')-strftime('%Y-%m-%d',Birthdate) AS [AGE]
+FROM
+  Employee</sql><sql name="AGGREGATE FUNCTION">/*
+created by:hisham
+date:06/06/2025
+description:WHAT ARE OUR LONG TIME GLOBAL SALES?
+*/
+SELECT
+  SUM(Total) AS[total sales],
+  AVG(TOTAL) AS[AVG SALES],
+  MAX(TOTAL) AS[MAX SALES],
+  MIN(TOTAL) AS[MIN SALES],
+  COUNT(*) AS[COUNT OF SALES]
+FROM
+  Invoice</sql><sql name="NESTED FUNCTION">/*
+created by:hisham
+date:06/06/2025
+description:NESTED FUNCTION
+*/
+SELECT
+  SUM(Total) AS[total sales],
+  ROUND(AVG(TOTAL),2) AS[AVG SALES],-- ROUND OFF NESTED FUNCTION
+  MAX(TOTAL) AS[MAX SALES],
+  MIN(TOTAL) AS[MIN SALES],
+  COUNT(*) AS[COUNT OF SALES]
+FROM
+  Invoice</sql><sql name="GROUPBY CLAUSES">/*
+created by:hisham
+date:06/06/2025
+description:GROUPING IN SQL(WHAT ARE THE AVG INVOICE TOTAL BY CITY?)
+*/
+SELECT
+  BillingCity,
+  ROUND(AVG(TOTAL),2) AS[AVG SALES]
+ 
+FROM
+  Invoice
+GROUP BY    --WE CAN APPLY GROUP BY TO NON AGGREGATED FIELD
+  BillingCity
+  </sql><sql name="SQL 25">/*
+created by:hisham
+date:06/06/2025
+description:GROUPING IN SQL(WHAT ARE THE AVG INVOICE TOTAL BY CITY FOR ONLY CITY STARTS WITH L?)
+*/
+SELECT
+  BillingCity,
+  ROUND(AVG(TOTAL),2) AS[AVG SALES]
+ 
+FROM
+  Invoice
+WHERE
+  BillingCity LIKE 'L%'
+GROUP BY    --WE CAN APPLY GROUP BY TO NON AGGREGATED FIELD
+  BillingCity
+  </sql><sql name="HAVING CLAUSE">/*
+created by:hisham
+date:06/06/2025
+description:GROUPING IN SQL(WHAT ARE THE AVG INVOICE TOTAL BY CITY &gt;5?)
+*/
+SELECT
+  BillingCity,
+  ROUND(AVG(TOTAL),2) AS[AVG SALES]
+ 
+FROM
+  Invoice
+GROUP BY    --WE CAN APPLY GROUP BY TO NON AGGREGATED FIELD
+  BillingCity
+HAVING --HAVING COMES AFTER GROUP BY
+  AVG(TOTAL)&gt;5
+ORDER BY
+  BillingCity
+  </sql><sql name="SQL 27">/*
+created by:hisham
+date:06/06/2025
+description:GROUPING IN SQL(WHAT ARE THE AVG INVOICE TOTAL BY CITY?)
+--WHERE CLAUSE ARE USED TO FILTER NON AGGREGATE DATABASE
+--HAVING CLAUSE USED TO FILTER AGGRETAED DATA
+-- WHERE WILL ALWAYS COME BEFORE HAVING
+*/
+SELECT
+  BillingCity,
+  ROUND(AVG(TOTAL),2) AS[AVG SALES]
+ 
+FROM
+  Invoice
+WHERE
+  BillingCity LIKE 'B%'
+GROUP BY    --WE CAN APPLY GROUP BY TO NON AGGREGATED FIELD
+  BillingCity
+HAVING 
+  AVG(TOTAL)&gt;5
+ORDER BY
+  BillingCity
+  </sql><sql name="SQL 28">/*
+created by:hisham
+date:06/06/2025
+description:GROUPING IN SQL MORE THAN ONE FIELD(WHAT ARE THE AVERAGE INVOICES TOTALS BY BILLING COUNTRY AND CITY?)
+*/
+SELECT
+  BillingCity,
+  BillingCountry,
+  ROUND(AVG(TOTAL),2) AS[AVG SALES]
+ 
+FROM
+  Invoice
+GROUP BY    --WE CAN APPLY GROUP BY TO NON AGGREGATED FIELD
+  BillingCity,BillingCountry
+ORDER BY
+  BillingCountry
+  </sql><sql name="SUBQUERIES">/*
+created by:hisham
+date:06/06/2025
+description:subqueries gther all the data that are less than avg total?
+*/
+SELECT
+  ROUND(AVG(TOTAL),2) AS[AVG SALES]
+ 
+FROM
+  Invoice
+
+  
+  
+SELECT
+  InvoiceDate,
+  BillingAddress,
+  BillingCity,
+  total
+FROM
+  Invoice
+WHERE
+  total&lt;
+    (SELECT AVG(total) FROM Invoice)
+ORDER BY
+  total DESC</sql><sql name="SQL 30">/*
+created by:hisham
+date:06/06/2025
+description:subqueries gther all the data that COMPARE AVAERAGE CITY SALES WITH OVERALL GLOBAL SALES
+*/
+SELECT
+  BillingCity,
+  ROUND(AVG(TOTAL),2) AS[AVG SALES],
+  (SELECT AVG(total) FROM Invoice)
+ 
+FROM
+  Invoice
+GROUP BY
+  BillingCity
+ORDER BY
+  BillingCity DESC
+
+  
+  
+</sql><sql name="SQL 31">/*
+created by:hisham
+date:06/07/2025
+description:subqueries SLECT INVOICE DATE WHIC IS GREATER THAN PARTICUALR INVOICE DATE?
+*/
+
+SELECT
+  InvoiceDate,
+  BillingCity,
+  BillingAddress 
+FROM
+  Invoice
+WHERE
+  InvoiceDate&gt;
+  (SELECT
+    InvoiceDate
+  FROM
+    Invoice
+  WHERE
+    InvoiceId=250)</sql><sql name="SQL 32">/*
+created by:hisham
+date:06/07/2025
+description:subqueries SLECT INVOICE DATE WITH MULTIPLE QUERIES
+*/
+
+SELECT
+  InvoiceDate,
+  BillingCity,
+  BillingAddress 
+FROM
+  Invoice
+WHERE
+  InvoiceDate IN
+  (SELECT
+    InvoiceDate
+  FROM
+    Invoice
+  WHERE
+    InvoiceId IN (247,251,250))</sql><sql name="SQL 33">/*
+created by:hisham
+date:06/07/2025
+description:subqueries SLECT TRACKS THAT ARE NOT SELLNG?
+*/
+
+SELECT
+  TrackId,
+  Name,
+  Composer
+FROM
+  Track
+WHERE
+  TrackId
+NOT IN
+
+  (SELECT
+    DISTINCT
+      TrackId
+  FROM 
+    InvoiceLine)
+</sql><sql name="SQL 34"></sql><sql name="SQL 35">/*
+created by:hisham
+date:06/06/2025
+description:subqueries gther all the data that COMPARE AVAERAGE CITY SALES WITH OVERALL GLOBAL SALES
+*/
+CREATE VIEW V_tRACK_INVOICE_LINE AS
+SELECT
+  Il.InvoiceId,
+  Il.UnitPrice,
+  Il.Quantity,
+  T.Name,
+  T.composer,
+  T.Milliseconds
+  
+FROM
+  InvoiceLine Il
+INNER JOIN
+  Track T
+ON
+  Il.TrackId=T.TrackId</sql><sql name="SQL 36">/*
+created by:hisham
+date:06/07/2025
+description:DML||inserting data
+*/
+
+INSERT INTO
+  Artist(Name)
+VALUES('Wiz KHALIFA')</sql><sql name="SQL 37">/*
+created by:hisham
+date:06/07/2025
+description:DML||UPDATE data
+*/
+
+UPDATE
+  Artist
+SET Name='BOB MARLEY'
+WHERE
+  ArtistId=256
+</sql><sql name="SQL 38">/*
+created by:hisham
+date:06/07/2025
+description:DML||DELETE data
+*/
+
+DELETE FROM
+  Artist
+WHERE
+  ArtistId = 276
+</sql><sql name="SQL 39">SELECT Composer,Name, FROM track WHERE Composer IS NULL OR Composer = '';
+</sql><sql name="SQL 40">SELECT
+  Name
+FROM
+  Track
+ORDER BY
+  Name DESC </sql><sql name="SQL 41">/*
+NAME:Hisham
+DATE:06/01/2025
+DESCRIPTION:HOW MANY INVOICES WERE BILLED IN CITIES STARTS WITH B?
+*/
+--% I DONT CARE WHAT COMES NEXT
+SELECT
+  LastName
+  
+FROM
+  Customer
+WHERE
+  LastName LIKE 'G%'
+</sql><current_tab id="40"/></tab_sql></sqlb_project>

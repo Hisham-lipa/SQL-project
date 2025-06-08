@@ -1,0 +1,8 @@
+description:
+
+open the project using DB Browser for SQLite for efficient working experience
+
+feel free to ask questions!
+
+download link for DB browser
+https://github.com/sqlitebrowser/sqlitebrowser.git
